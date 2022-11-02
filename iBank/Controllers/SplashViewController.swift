@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  SplashViewController.swift
 //  iBank
 //
 //  Created by Keval on 3/14/21.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class SplashViewController: UIViewController {
 
     @IBOutlet weak var btnRegister: UIButton!
     @IBOutlet weak var btnLogin: UIButton!

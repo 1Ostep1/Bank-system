@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -12,13 +13,13 @@
         <!--Welcome-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="Welcome" id="BYZ-38-t0r" customClass="ViewController" customModule="iBank" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Welcome" id="BYZ-38-t0r" customClass="SplashViewController" customModule="iBank" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2jo-Yc-GtL">
-                                <rect key="frame" x="16" y="64" width="358" height="730"/>
+                                <rect key="frame" x="16" y="67" width="358" height="727"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vJe-Ec-xRF">
                                         <rect key="frame" x="0.0" y="0.0" width="358" height="583"/>
@@ -72,7 +73,7 @@
                                                         <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="22"/>
                                                         <state key="normal" title="Register"/>
                                                         <connections>
-                                                            <action selector="showRegister:" destination="BYZ-38-t0r" eventType="touchUpInside" id="P0p-ZH-n9b"/>
+                                                            <action selector="showRegister:" destination="BYZ-38-t0r" eventType="touchUpInside" id="78c-O5-spg"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vxy-aL-uu6">
@@ -80,7 +81,7 @@
                                                         <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="22"/>
                                                         <state key="normal" title="Login"/>
                                                         <connections>
-                                                            <action selector="showLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="g9l-gX-bw6"/>
+                                                            <action selector="showLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="u3E-KQ-qbq"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -142,13 +143,13 @@
         <!--Login-->
         <scene sceneID="UdU-TQ-D2H">
             <objects>
-                <viewController title="Login" modalPresentationStyle="fullScreen" id="34Q-zw-2zJ" customClass="VC_Login" customModule="iBank" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Login" modalPresentationStyle="fullScreen" id="34Q-zw-2zJ" customClass="LoginViewController" customModule="iBank" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RS4-JH-pAu">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vuJ-hK-H9d">
-                                <rect key="frame" x="157.66666666666666" y="64" width="75" height="38.666666666666657"/>
+                                <rect key="frame" x="157.66666666666666" y="67" width="75" height="38.666666666666657"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="75" id="vWr-wm-2O3"/>
                                 </constraints>
@@ -157,7 +158,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eeD-6y-O05">
-                                <rect key="frame" x="10" y="77.333333333333329" width="58" height="22"/>
+                                <rect key="frame" x="10" y="80.333333333333329" width="58" height="22"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title=" Back" image="chevron.backward" catalog="system">
                                     <color key="titleColor" name="AccentColor"/>
@@ -167,7 +168,7 @@
                                 </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vbu-8x-uZl">
-                                <rect key="frame" x="16" y="118.66666666666669" width="358" height="675.33333333333326"/>
+                                <rect key="frame" x="16" y="121.66666666666669" width="358" height="672.33333333333326"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pLY-qO-UTS">
                                         <rect key="frame" x="0.0" y="0.0" width="358" height="346"/>
@@ -211,7 +212,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="login:" destination="34Q-zw-2zJ" eventType="touchUpInside" id="0El-3f-oXK"/>
+                                                    <action selector="login:" destination="34Q-zw-2zJ" eventType="touchUpInside" id="vtB-99-u7w"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -264,8 +265,8 @@
                     <connections>
                         <outlet property="btnBack" destination="eeD-6y-O05" id="MSx-zv-bWj"/>
                         <outlet property="btnLogin" destination="YbN-jg-LXl" id="qmZ-El-eXA"/>
-                        <outlet property="fieldName" destination="G9g-Wu-CWN" id="Q25-fQ-bLQ"/>
-                        <outlet property="fieldPassword" destination="5hv-jg-VQM" id="I2b-Jw-M2q"/>
+                        <outlet property="fieldName" destination="G9g-Wu-CWN" id="jYe-ro-893"/>
+                        <outlet property="fieldPassword" destination="5hv-jg-VQM" id="zg7-dx-jhb"/>
                         <segue destination="Nw4-m7-yIQ" kind="show" identifier="segue_homeScreen" id="D6c-Ll-Ldm"/>
                     </connections>
                 </viewController>
@@ -276,13 +277,13 @@
         <!--Home-->
         <scene sceneID="DyH-TJ-0IH">
             <objects>
-                <viewController title="Home" modalPresentationStyle="fullScreen" id="Nw4-m7-yIQ" customClass="VC_Home" customModule="iBank" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Home" modalPresentationStyle="fullScreen" id="Nw4-m7-yIQ" customClass="HomeViewController" customModule="iBank" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hqC-Vg-T8l">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g46-uf-LRg">
-                                <rect key="frame" x="157.66666666666666" y="64" width="75" height="39"/>
+                                <rect key="frame" x="157.66666666666666" y="67" width="75" height="39"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="75" id="TUt-5X-Wwk"/>
                                 </constraints>
@@ -291,7 +292,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8gm-16-xFy">
-                                <rect key="frame" x="10" y="77.666666666666671" width="58" height="22"/>
+                                <rect key="frame" x="10" y="80.666666666666671" width="58" height="22"/>
                                 <state key="normal" title=" Back" image="chevron.backward" catalog="system">
                                     <color key="titleColor" name="AccentColor"/>
                                 </state>
@@ -300,7 +301,7 @@
                                 </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IYG-ce-xUw">
-                                <rect key="frame" x="16" y="119" width="358" height="675"/>
+                                <rect key="frame" x="16" y="122" width="358" height="672"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S3T-LM-bSF">
                                         <rect key="frame" x="0.0" y="0.0" width="358" height="677.33333333333337"/>
@@ -324,8 +325,8 @@
                                                     <constraint firstAttribute="height" constant="200" id="QnD-5c-HU5"/>
                                                 </constraints>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TVcell_AccountList" rowHeight="88" id="FUz-hl-qSh" customClass="TVcell_AccountList" customModule="iBank" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="28" width="358" height="88"/>
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TVcell_AccountList" rowHeight="88" id="FUz-hl-qSh" customClass="AccountListTableCell" customModule="iBank" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="50" width="358" height="88"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FUz-hl-qSh" id="vZ8-LP-iMF">
                                                             <rect key="frame" x="0.0" y="0.0" width="358" height="88"/>
@@ -576,7 +577,7 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="gLl-eD-MxT"/>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JM8-aR-gjp">
-                                <rect key="frame" x="293" y="77.666666666666671" width="81" height="22"/>
+                                <rect key="frame" x="293" y="80.666666666666671" width="81" height="22"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title=" Logout" image="power" catalog="system">
                                     <color key="titleColor" name="AccentColor"/>
@@ -626,13 +627,13 @@
         <!--AddBankAccount-->
         <scene sceneID="GoM-ob-akE">
             <objects>
-                <viewController title="AddBankAccount" modalPresentationStyle="fullScreen" id="uCe-KW-gKS" customClass="VC_AddBankAccount" customModule="iBank" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="AddBankAccount" modalPresentationStyle="fullScreen" id="uCe-KW-gKS" customClass="AddBankAccountViewController" customModule="iBank" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nWW-Wz-est">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Bank Account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fFg-kU-OeT">
-                                <rect key="frame" x="95" y="64" width="200" height="31.333333333333329"/>
+                                <rect key="frame" x="95" y="67" width="200" height="31.333333333333329"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="ngv-Ud-xpk"/>
                                 </constraints>
@@ -641,7 +642,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iwx-om-IqP">
-                                <rect key="frame" x="9.9999999999999964" y="71.666666666666671" width="57.666666666666657" height="22"/>
+                                <rect key="frame" x="9.9999999999999964" y="74.666666666666671" width="57.666666666666657" height="22"/>
                                 <state key="normal" title=" Back" image="chevron.backward" catalog="system">
                                     <color key="titleColor" name="AccentColor"/>
                                 </state>
@@ -651,7 +652,7 @@
                                 </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pp1-b9-L8Z">
-                                <rect key="frame" x="16" y="111.33333333333331" width="358" height="682.66666666666674"/>
+                                <rect key="frame" x="16" y="114.33333333333331" width="358" height="679.66666666666674"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3sd-dZ-sPR">
                                         <rect key="frame" x="0.0" y="0.0" width="358" height="535.33333333333337"/>
@@ -692,13 +693,13 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Interest rate:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B2h-Aq-I3A">
-                                                        <rect key="frame" x="0.0" y="115.66666666666663" width="104" height="24.333333333333343"/>
+                                                        <rect key="frame" x="0.0" y="115.66666666666669" width="104" height="24.333333333333343"/>
                                                         <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 %" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LW6-d6-gDd">
-                                                        <rect key="frame" x="161" y="115.66666666666663" width="30" height="24.333333333333343"/>
+                                                        <rect key="frame" x="161" y="115.66666666666669" width="30" height="24.333333333333343"/>
                                                         <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -754,7 +755,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Odc-to-aYA">
-                                                        <rect key="frame" x="148" y="114" width="180" height="34"/>
+                                                        <rect key="frame" x="148" y="113.99999999999994" width="180" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
@@ -928,13 +929,13 @@
         <!--TransferMoney-->
         <scene sceneID="iig-aq-So7">
             <objects>
-                <viewController title="TransferMoney" modalPresentationStyle="fullScreen" id="ejD-vf-sOj" customClass="VC_TransferMoney" customModule="iBank" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="TransferMoney" modalPresentationStyle="fullScreen" id="ejD-vf-sOj" customClass="TransferMoneyViewController" customModule="iBank" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jKs-aQ-aUg">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transfer Money" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vB8-aD-1QI">
-                                <rect key="frame" x="105" y="64" width="180" height="34"/>
+                                <rect key="frame" x="105" y="67" width="180" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="180" id="NDs-Wl-i9x"/>
                                 </constraints>
@@ -943,7 +944,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nor-3e-T6H">
-                                <rect key="frame" x="10" y="73" width="58" height="22"/>
+                                <rect key="frame" x="10" y="76" width="58" height="22"/>
                                 <state key="normal" title=" Back" image="chevron.backward" catalog="system">
                                     <color key="titleColor" name="AccentColor"/>
                                 </state>
@@ -953,7 +954,7 @@
                                 </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Akm-9E-dYW">
-                                <rect key="frame" x="16" y="114" width="358" height="680"/>
+                                <rect key="frame" x="16" y="117" width="358" height="677"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Ga-ho-BBG">
                                         <rect key="frame" x="0.0" y="0.0" width="358" height="713.33333333333337"/>
@@ -965,8 +966,8 @@
                                                     <constraint firstAttribute="height" constant="200" id="P5d-et-kHw"/>
                                                 </constraints>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TVcell_AccountList" rowHeight="88" id="o8F-Hj-Ejz" customClass="TVcell_AccountList" customModule="iBank" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="28" width="358" height="88"/>
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TVcell_AccountList" rowHeight="88" id="o8F-Hj-Ejz" customClass="AccountListTableCell" customModule="iBank" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="50" width="358" height="88"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="o8F-Hj-Ejz" id="i9L-9j-aE2">
                                                             <rect key="frame" x="0.0" y="0.0" width="358" height="88"/>
@@ -1109,13 +1110,13 @@
         <!--EditProfile-->
         <scene sceneID="ebD-hi-Dmo">
             <objects>
-                <viewController title="EditProfile" modalPresentationStyle="fullScreen" id="cUe-KD-Lwb" customClass="VC_EditProfile" customModule="iBank" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="EditProfile" modalPresentationStyle="fullScreen" id="cUe-KD-Lwb" customClass="EditProfileViewController" customModule="iBank" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9TA-T0-VCP">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Profile" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zX4-Fu-E4h">
-                                <rect key="frame" x="120" y="64" width="150" height="38.333333333333343"/>
+                                <rect key="frame" x="120" y="67" width="150" height="38.333333333333343"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="RFq-dY-dLs"/>
                                 </constraints>
@@ -1124,7 +1125,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qHo-4V-cPe">
-                                <rect key="frame" x="16" y="75.333333333333329" width="58" height="22"/>
+                                <rect key="frame" x="16" y="78.333333333333329" width="58" height="22"/>
                                 <state key="normal" title=" Back" image="chevron.backward" catalog="system">
                                     <color key="titleColor" name="AccentColor"/>
                                 </state>
@@ -1135,7 +1136,7 @@
                                 </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xrq-rd-rOx">
-                                <rect key="frame" x="16" y="118.33333333333331" width="358" height="707.66666666666674"/>
+                                <rect key="frame" x="16" y="121.33333333333331" width="358" height="704.66666666666674"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C1T-YK-96Y">
                                         <rect key="frame" x="0.0" y="0.0" width="358" height="370.66666666666669"/>
@@ -1286,13 +1287,13 @@
         <!--Registration-->
         <scene sceneID="wbS-iV-IcK">
             <objects>
-                <viewController title="Registration" modalPresentationStyle="fullScreen" id="SDM-Kc-vOD" customClass="VC_Registration" customModule="iBank" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Registration" modalPresentationStyle="fullScreen" id="SDM-Kc-vOD" customClass="RegistrationViewController" customModule="iBank" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aL6-Py-dix">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Registration" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U0X-0u-SBp">
-                                <rect key="frame" x="117.66666666666669" y="64" width="155" height="38.666666666666657"/>
+                                <rect key="frame" x="117.66666666666669" y="67" width="155" height="38.666666666666657"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="155" id="hWH-zh-yOd"/>
                                 </constraints>
@@ -1301,7 +1302,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LhF-32-CDr">
-                                <rect key="frame" x="9.9999999999999964" y="77.333333333333329" width="57.666666666666657" height="22"/>
+                                <rect key="frame" x="9.9999999999999964" y="80.333333333333329" width="57.666666666666657" height="22"/>
                                 <state key="normal" title=" Back" image="chevron.backward" catalog="system">
                                     <color key="titleColor" name="AccentColor"/>
                                 </state>
@@ -1310,7 +1311,7 @@
                                 </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZCN-HX-Drd">
-                                <rect key="frame" x="16" y="122.66666666666669" width="358" height="687.33333333333326"/>
+                                <rect key="frame" x="16" y="125.66666666666669" width="358" height="684.33333333333326"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iRo-Jq-5hb">
                                         <rect key="frame" x="0.0" y="0.0" width="358" height="847"/>
@@ -1674,18 +1675,18 @@
     <resources>
         <image name="add_bankAcc_icon" width="512" height="512"/>
         <image name="bank_icon" width="512" height="512"/>
-        <image name="chevron.backward" catalog="system" width="96" height="128"/>
+        <image name="chevron.backward" catalog="system" width="97" height="128"/>
         <image name="deposit_icon" width="220" height="224"/>
         <image name="edit_profile_icon" width="512" height="512"/>
         <image name="pay_bill_icon" width="2000" height="2000"/>
-        <image name="power" catalog="system" width="128" height="124"/>
+        <image name="power" catalog="system" width="127" height="128"/>
         <image name="transfer_icon" width="512" height="512"/>
         <image name="withdraw_icon" width="512" height="512"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -66,7 +66,6 @@ extension UIFont {
 
 
 extension UIView {
-
     func addTapGesture(action : @escaping ()->Void ){
         let tap = MyTapGestureRecognizer(target: self , action: #selector(self.handleTap(_:)))
         tap.action = action

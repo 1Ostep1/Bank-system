@@ -7,7 +7,7 @@
 
 import UIKit
 
-class VC_TransferMoney: UIViewController {
+class TransferMoneyViewController: UIViewController {
     
     // Outlets
     @IBOutlet weak var btnBack: UIButton!
@@ -30,7 +30,7 @@ class VC_TransferMoney: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        if let customer = loggedInCustomer {
+        if let customer = Constants.loggedInCustomer {
             setBankAccounts(customer: customer)
         }
         else {
@@ -38,7 +38,7 @@ class VC_TransferMoney: UIViewController {
         }
         
         // filling allCustomers
-        if let allCusts = customers {
+        if let allCusts = Constants.customers {
             allCustomers = allCusts.customers
             for cust in allCustomers {
                 allCustomerNames.append(cust.name)
@@ -74,11 +74,11 @@ class VC_TransferMoney: UIViewController {
     @IBAction func makeTransfer(_ sender: Any) {
         if shouldTransfer() {
             let amount = Double(fieldAmount.text!)!
-            addToBeneficiary(money: amount, accToTransfer: payeeAccNo)
+            BankTransationService.shared.addToBeneficiary(money: amount, accToTransfer: payeeAccNo)
             let acc = accounts[tvAccountList.indexPathForSelectedRow!.row]
             _ = acc.deductBalance(amountToDeduct: amount)
             
-            updateData()
+            Constants.updateData()
             
             self.showAlertPopup(title: "Success", message: "$ \(amount) transfered successfully!", alertStyle: .alert, actionTitles: ["Okay"], actionStyles: [.default], actions: [{(action) -> Void in
                 self.dismiss(animated: true, completion: nil)
@@ -130,13 +130,13 @@ class VC_TransferMoney: UIViewController {
         if let fromAcc = tvAccountList.indexPathForSelectedRow {
             switch fromAcc.row {
                 case 0: // saving
-                    availableBalance = loggedInCustomer!.accounts!.savingsAcc!.accountBalance
+                availableBalance = Constants.loggedInCustomer!.accounts!.savingsAcc!.accountBalance
                     
                 case 1: // salary
-                    availableBalance = loggedInCustomer!.accounts!.salaryAcc!.accountBalance
+                availableBalance = Constants.loggedInCustomer!.accounts!.salaryAcc!.accountBalance
                     
                 case 2: // fixed deposit
-                    availableBalance = loggedInCustomer!.accounts!.fixedDepositAcc!.accountBalance
+                availableBalance = Constants.loggedInCustomer!.accounts!.fixedDepositAcc!.accountBalance
                     
                 default:
                     print("Error")
@@ -161,7 +161,7 @@ class VC_TransferMoney: UIViewController {
 
 }
 
-extension VC_TransferMoney: UITableViewDelegate, UITableViewDataSource {
+extension TransferMoneyViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         accounts.count
@@ -169,7 +169,7 @@ extension VC_TransferMoney: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let acc = accounts[indexPath.row]
-        let cell = tvAccountList.dequeueReusableCell(withIdentifier: "TVcell_AccountList") as! TVcell_AccountList
+        let cell = tvAccountList.dequeueReusableCell(withIdentifier: "TVcell_AccountList") as! AccountListTableCell
         
         cell.setCell(accType: acc is SavingsAccount ? "Saving Account" : (acc is SalaryAccount ? "Salary Account" : (acc is FixedDepositAccount ? "Fixed Deposit Account" : "")), accBalance: acc.accountBalance)
         
@@ -182,7 +182,7 @@ extension VC_TransferMoney: UITableViewDelegate, UITableViewDataSource {
     
 }
 
-extension VC_TransferMoney: UIPickerViewDelegate, UIPickerViewDataSource {
+extension TransferMoneyViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         2

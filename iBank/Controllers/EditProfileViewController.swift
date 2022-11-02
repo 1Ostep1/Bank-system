@@ -1,5 +1,5 @@
 //
-//  VC_EditProfile.swift
+//  EditProfileViewController.swift
 //  iBank
 //
 //  Created by Keval on 3/27/21.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class VC_EditProfile: UIViewController {
+class EditProfileViewController: UIViewController {
     
     @IBOutlet weak var btnBack: UIButton!
     @IBOutlet weak var field_name: UITextField!
@@ -21,7 +21,7 @@ class VC_EditProfile: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        if let user = loggedInCustomer {
+        if let user = Constants.loggedInCustomer {
             field_name.text = user.name
             field_password.text = user.password
             segment_gender.selectedSegmentIndex = user.gender == "male" ? 0 : 1
@@ -51,13 +51,13 @@ class VC_EditProfile: UIViewController {
             if !_name.isEmpty {
                 if let _pass = field_password.text {
                     if !_pass.isEmpty {
-                        loggedInCustomer?.name = _name
-                        loggedInCustomer?.password = _pass
-                        loggedInCustomer?.gender = segment_gender.selectedSegmentIndex == 0 ? "male" : "female"
-                        loggedInCustomer?.contactNo = field_contact.text ?? ""
-                        loggedInCustomer?.address = field_address.text ?? ""
+                        Constants.loggedInCustomer?.name = _name
+                        Constants.loggedInCustomer?.password = _pass
+                        Constants.loggedInCustomer?.gender = segment_gender.selectedSegmentIndex == 0 ? "male" : "female"
+                        Constants.loggedInCustomer?.contactNo = field_contact.text ?? ""
+                        Constants.loggedInCustomer?.address = field_address.text ?? ""
                         
-                        updateData()
+                        Constants.updateData()
                         showAlertPopup(title: "Success", message: "Profile updated successfully!", alertStyle: .alert, actionTitles: ["Okay"], actionStyles: [.default], actions: [{(action) -> Void in
                             self.dismiss(animated: true, completion: nil)
                         }])

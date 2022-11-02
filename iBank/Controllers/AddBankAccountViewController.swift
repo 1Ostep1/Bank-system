@@ -1,5 +1,5 @@
 //
-//  VC_AddBankAccount.swift
+//  AddBankAccountViewController.swift
 //  iBank
 //
 //  Created by Keval on 3/26/21.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class VC_AddBankAccount: UIViewController {
+class AddBankAccountViewController: UIViewController {
     
     // Outlets
     @IBOutlet weak var btnBack: UIButton!
@@ -43,7 +43,7 @@ class VC_AddBankAccount: UIViewController {
         
         pickerView(picker_accType, didSelectRow: 0, inComponent: 0)
         
-        if let cust = loggedInCustomer {
+        if let cust = Constants.loggedInCustomer {
             if let accs = cust.accounts {
                 accounts = accs
             }
@@ -88,11 +88,11 @@ class VC_AddBankAccount: UIViewController {
             }
             
             if let bankAccs = self.accounts {
-                loggedInCustomer!.addBankAccounts(accs: bankAccs)
+                Constants.loggedInCustomer!.addBankAccounts(accs: bankAccs)
             }
             
             // update the data saved in file
-            updateData()
+            Constants.updateData()
             
             showAlertPopup(title: "Success", message: "Bank account added successfully!", alertStyle: .alert, actionTitles: ["Okay"], actionStyles: [.default], actions: [{(action) -> Void in
                 self.dismiss(animated: true, completion: nil)
@@ -110,13 +110,22 @@ class VC_AddBankAccount: UIViewController {
         
         switch picker_accType.selectedRow(inComponent: 0) {
             case 0: // saving account
-                account = SavingsAccount(accNo: generateAccountNumber(), accBalance: Double(savingField_amount.text!)!, minBal: savingMinBal, intRate: savingIntRate)
+                account = SavingsAccount(accNo: AuthorizationService.shared.generateAccountNumber(),
+                                         accBalance: Double(savingField_amount.text!)!,
+                                         minBal: Constants.savingMinBal,
+                                         intRate: Constants.savingIntRate)
                 
             case 1: // salary account
-                account = SalaryAccount(accNo: generateAccountNumber(), accBalance: Double(salaryField_amount.text!)!, employer: salaryField_employer.text!, monthlySalary: Double(salaryField_salary.text!)!)
+                account = SalaryAccount(accNo: AuthorizationService.shared.generateAccountNumber(),
+                                        accBalance: Double(salaryField_amount.text!)!,
+                                        employer: salaryField_employer.text!,
+                                        monthlySalary: Double(salaryField_salary.text!)!)
                 
             case 2:
-                account = FixedDepositAccount(accNo: generateAccountNumber(), accBalance: Double(fdField_amount.text!)!, termDur: Int(fdField_months.text!)!, intRate: fdIntRate)
+                account = FixedDepositAccount(accNo: AuthorizationService.shared.generateAccountNumber(),
+                                              accBalance: Double(fdField_amount.text!)!,
+                                              termDur: Int(fdField_months.text!)!,
+                                              intRate: Constants.fdIntRate)
                 
             default:
                 print("Error - no row selected for pickerview")
@@ -165,7 +174,7 @@ class VC_AddBankAccount: UIViewController {
     
 }
 
-extension VC_AddBankAccount: UIPickerViewDelegate, UIPickerViewDataSource {
+extension AddBankAccountViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         1
@@ -186,8 +195,8 @@ extension VC_AddBankAccount: UIPickerViewDelegate, UIPickerViewDataSource {
                 view_salaryAcc.isHidden = true
                 view_fdAcc.isHidden = true
                 
-                savingLabel_minAmount.text = "$ \(String(savingMinBal))"
-                savingLabel_intRate.text = "\(String(savingIntRate)) %"
+            savingLabel_minAmount.text = "$ \(String(Constants.savingMinBal))"
+            savingLabel_intRate.text = "\(String(Constants.savingIntRate)) %"
                 
             case 1:
                 view_savingAcc.isHidden = true
@@ -199,7 +208,7 @@ extension VC_AddBankAccount: UIPickerViewDelegate, UIPickerViewDataSource {
                 view_salaryAcc.isHidden = true
                 view_fdAcc.isHidden = false
                 
-                fdLabel_intRate.text = "\(String(fdIntRate)) %"
+            fdLabel_intRate.text = "\(String(Constants.fdIntRate)) %"
                 
             default:
                 view_savingAcc.isHidden = true

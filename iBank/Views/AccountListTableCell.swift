@@ -1,5 +1,5 @@
 //
-//  TVcell_AccountList.swift
+//  AccountListTableCell.swift
 //  iBank
 //
 //  Created by Keval on 3/24/21.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TVcell_AccountList: UITableViewCell {
+class AccountListTableCell: UITableViewCell {
     
     @IBOutlet weak var label_accType: UILabel!
     @IBOutlet weak var label_accBalance: UILabel!

@@ -1,5 +1,5 @@
 //
-//  VC_Registration.swift
+//  RegistrationViewController.swift
 //  iBank
 //
 //  Created by Keval on 3/24/21.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class VC_Registration: UIViewController {
+class RegistrationViewController: UIViewController {
     
     // outlets
     
@@ -78,15 +78,31 @@ class VC_Registration: UIViewController {
             
             switch picker_accType.selectedRow(inComponent: 0) {
                 case 0: // saving account
-                    customer.addBankAccounts(accs: Accounts(salAcc: nil, savAcc: SavingsAccount(accNo: generateAccountNumber(), accBalance: Double(savingField_amount.text!)!, minBal: savingMinBal, intRate: savingIntRate), fixAcc: nil))
+                customer.addBankAccounts(accs: Accounts(salAcc: nil,
+                                                        savAcc: SavingsAccount(accNo: AuthorizationService.shared.generateAccountNumber(),
+                                                                               accBalance: Double(savingField_amount.text!)!,
+                                                                               minBal: Constants.savingMinBal,
+                                                                               intRate: Constants.savingIntRate),
+                                                        fixAcc: nil))
                     print("")
                     
                 case 1: // salary account
-                    customer.addBankAccounts(accs: Accounts(salAcc: SalaryAccount(accNo: generateAccountNumber(), accBalance: Double(salaryField_amount.text!)!, employer: salaryField_employer.text!, monthlySalary: Double(salaryField_salary.text!)!), savAcc: nil, fixAcc: nil))
+                    customer.addBankAccounts(accs: Accounts(salAcc: SalaryAccount(accNo: AuthorizationService.shared.generateAccountNumber(),
+                                                                                  accBalance: Double(salaryField_amount.text!)!,
+                                                                                  employer: salaryField_employer.text!,
+                                                                                  monthlySalary: Double(salaryField_salary.text!)!),
+                                                            savAcc: nil,
+                                                            fixAcc: nil))
                     print("")
                     
                 case 2: // Fd account
-                    customer.addBankAccounts(accs: Accounts(salAcc: nil, savAcc: nil, fixAcc: FixedDepositAccount(accNo: generateAccountNumber(), accBalance: Double(fdField_amount.text!)!, termDur: Int(fdField_months.text!)!, intRate: fdIntRate)))
+                    customer.addBankAccounts(accs: Accounts(salAcc: nil,
+                                                            savAcc: nil,
+                                                            fixAcc: FixedDepositAccount(accNo: AuthorizationService.shared.generateAccountNumber(),
+                                                                                        accBalance: Double(fdField_amount.text!)!,
+                                                                                        termDur: Int(fdField_months.text!)!,
+                                                                                        intRate: Constants.fdIntRate)
+                                                           ))
                     print("")
                     
                 default:
@@ -94,18 +110,18 @@ class VC_Registration: UIViewController {
             }
             
             // create the object of Customers which holds all data of our program
-            if let custs = customers {
+            if let custs = Constants.customers {
                 custs.customers.append(customer)
-                customers = custs
+                Constants.customers = custs
             }
             else {
-                customers = Customers(custs: [customer])
+                Constants.customers = Customers(custs: [customer])
             }
             
             var jsonStr = ""
             
             // if customers obj is not nil, get the JSONstring for that object
-            if let data = customers {
+            if let data = Constants.customers {
                 jsonStr = getJsonString(of: data)
             }
             
@@ -171,7 +187,7 @@ class VC_Registration: UIViewController {
 
 }
 
-extension VC_Registration: UIPickerViewDelegate, UIPickerViewDataSource {
+extension RegistrationViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -193,8 +209,8 @@ extension VC_Registration: UIPickerViewDelegate, UIPickerViewDataSource {
                 view_salaryAcc.isHidden = true
                 view_fdAcc.isHidden = true
                 
-                savingLabel_minAmount.text = "$ \(String(savingMinBal))"
-                savingLabel_intRate.text = "\(String(savingIntRate)) %"
+            savingLabel_minAmount.text = "$ \(String(Constants.savingMinBal))"
+            savingLabel_intRate.text = "\(String(Constants.savingIntRate)) %"
                 
             case 1:
                 view_savingAcc.isHidden = true
@@ -206,7 +222,7 @@ extension VC_Registration: UIPickerViewDelegate, UIPickerViewDataSource {
                 view_salaryAcc.isHidden = true
                 view_fdAcc.isHidden = false
                 
-                fdLabel_intRate.text = "\(String(fdIntRate)) %"
+            fdLabel_intRate.text = "\(String(Constants.fdIntRate)) %"
                 
             default:
                 view_savingAcc.isHidden = true

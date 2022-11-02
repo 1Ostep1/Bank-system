@@ -1,5 +1,5 @@
 //
-//  VC_Login.swift
+//  LoginViewController.swift
 //  iBank
 //
 //  Created by Keval on 3/24/21.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class VC_Login: UIViewController {
+class LoginViewController: UIViewController {
     
     @IBOutlet weak var btnBack: UIButton!
     @IBOutlet weak var fieldName: UITextField!
@@ -46,8 +46,8 @@ class VC_Login: UIViewController {
             if !name.isEmpty {
                 if let pass = fieldPassword.text {
                     if !pass.isEmpty {
-                        loggedInCustomer = tryLogin(name: name, pass: pass)
-                        if loggedInCustomer == nil {
+                        Constants.loggedInCustomer = AuthorizationService.shared.tryLogin(name: name, pass: pass)
+                        if Constants.loggedInCustomer == nil {
                             showAlertPopup(title: "Uh-oh", message: "name and password doesn't match OR the user not found", alertStyle: .alert, actionTitles: ["Okay"], actionStyles: [.default], actions: [{_ in}])
                         }
                         else {

@@ -1,5 +1,5 @@
 //
-//  VC_Home.swift
+//  HomeViewController.swift
 //  iBank
 //
 //  Created by Keval on 3/24/21.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class VC_Home: UIViewController {
+class HomeViewController: UIViewController {
     
     @IBOutlet weak var btnBack: UIButton!
     @IBOutlet weak var label_helloGuest: UILabel!
@@ -31,8 +31,8 @@ class VC_Home: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        if let customer = loggedInCustomer {
-            label_helloGuest.text = "Hello \(loggedInCustomer!.name),\nWelcome back to iBank!"
+        if let customer = Constants.loggedInCustomer {
+            label_helloGuest.text = "Hello \(Constants.loggedInCustomer!.name),\nWelcome back to iBank!"
             
             setBankAccounts(customer: customer)
         }
@@ -61,7 +61,7 @@ class VC_Home: UIViewController {
     // this function will be called everytime a ViewController will appear on screen
     // So, we can use this function to check any updates to process on screen like updating the bank account table view and like that
     override func viewDidAppear(_ animated: Bool) {
-        if let customer = loggedInCustomer {
+        if let customer = Constants.loggedInCustomer {
             setBankAccounts(customer: customer)
             tvAccountList.reloadData()
             constraint_tvAccList_height.constant = CGFloat(accounts.count * 88)
@@ -147,7 +147,7 @@ class VC_Home: UIViewController {
     }
     
     func performLogout() {
-        loggedInCustomer = nil
+        Constants.loggedInCustomer = nil
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -167,7 +167,7 @@ class VC_Home: UIViewController {
                 if !userInput.isEmpty {
                     if let amount = Double(userInput) {
                         _ = acc.addBalance(amountToAdd: amount)
-                        updateData()
+                        Constants.updateData()
                         self.tvAccountList.reloadData()
                         
                         self.showCustomToast(message: "Success!", font: UIFont.myFont())
@@ -219,7 +219,7 @@ class VC_Home: UIViewController {
                     if let amount = Double(userInput) {
                         if amount < acc.accountBalance {
                             _ = acc.deductBalance(amountToDeduct: amount)
-                            updateData()
+                            Constants.updateData()
                             self.tvAccountList.reloadData()
                             
                             self.showCustomToast(message: "Success!", font: UIFont.myFont())
@@ -279,7 +279,7 @@ class VC_Home: UIViewController {
     
 }
 
-extension VC_Home: UITableViewDelegate, UITableViewDataSource {
+extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         accounts.count
@@ -287,16 +287,19 @@ extension VC_Home: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let acc = accounts[indexPath.row]
-        let cell = tvAccountList.dequeueReusableCell(withIdentifier: "TVcell_AccountList") as! TVcell_AccountList
+        let cell = tvAccountList.dequeueReusableCell(withIdentifier: "TVcell_AccountList") as! AccountListTableCell
         
-        cell.setCell(accType: acc is SavingsAccount ? "Saving Account" : (acc is SalaryAccount ? "Salary Account" : (acc is FixedDepositAccount ? "Fixed Deposit Account" : "")), accBalance: acc.accountBalance)
+        cell.setCell(accType: acc is SavingsAccount ?
+                     "Saving Account" :
+                        (acc is SalaryAccount ? "Salary Account" :
+                            (acc is FixedDepositAccount ?
+                             "Fixed Deposit Account" : "")),
+                     accBalance: acc.accountBalance)
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // perform action on account row selection
-    }
-    
-    
+    }  
 }
